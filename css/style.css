@@ -11,8 +11,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.3rem;
-    /* DEBUG */
-    background-color: aqua;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -30,17 +29,14 @@ select {
 
 /* MAIN SECTION */
 main {
-    height: calc(100vh - 180px);
     background-color: aquamarine;
     padding: 2rem;
 }
 
 .main-container {
     width: 800px; 
+    height: calc(100vh - 180px);
     margin: auto;
-    /* DEBUG */
-    background-color: lightcoral;
-    height: 800px;
 }
 
 .grid {
@@ -51,9 +47,27 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid black;
+    font-size: 1.5rem;
+}
+
+.azure {
+    background-color: azure;
+}
+
+.easy {
     width: calc(800px / 10);
     height: calc(800px / 10);
-    border: 2px solid black;
+}
+
+.medium {
+    width: calc(800px / 9);
+    height: calc(800px / 9);
+}
+
+.hard {
+    width: calc(800px / 7);
+    height: calc(800px / 7);
 }
 
 
@@ -61,9 +75,6 @@ main {
 footer {
     padding: 0 2rem;
     height: 80px;
-    /* DEBUG */
-    background-color: bisque;
-
 }
 
 footer p {
