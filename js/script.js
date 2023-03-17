@@ -19,8 +19,9 @@ btnStart.addEventListener("click", getEasyBox)
 
 // GENERIAMO I NUMERI PER CASELLA
 function getEasyBox () {
-    for (let i =1; i <= 100; i++) {
+    for (let i = 1; i <= 100; i++) {
         const grid = generateNewBox(i)
+        grid.addEventListener("click", colorClick)
         gridElem.append(grid)
     }
 }
@@ -30,6 +31,12 @@ function generateNewBox(testo) {
     const newBox = document.createElement("div");
     newBox.classList.add ("grid-item");
     newBox.classList.add ("easy");
-    newBox.innerHTML = `${testo}`;
+    newBox.innerHTML = `<span>${testo}</span>`;
     return newBox;
+}
+
+function colorClick() {
+    const clickNumber = parseInt(this.querySelector("span").textContent)
+    this.classList.toggle("azure");
+    console.log(clickNumber);
 }
