@@ -4,37 +4,90 @@ const mediumBox = 81;
 const hardBox = 49;
 
 // ORA GENERIAMO LE CASELLE IN BASE AL NUMERO 
-const gridElem = document.querySelector(".grid")
-const btnStart = document.querySelector("button")
 
-btnStart.addEventListener("click", getEasyBox)
+const btnStart = document.querySelector("button");
 
-// for (let i = 0; i < numbers; i++) {
-//     const currentNumber = number[i];
-//     const newItem = generateNewBox[currentNumber];
-//     gridElem.append(newItem)
-// }
+// IMPLEMENTIAMO IL GIOCO AL CLICK
+btnStart.addEventListener("click", function() {
+    const userChoise = document.getElementById("difficoltà");
+    const userChoiseInput = userChoise.value;
+    console.log(userChoise);
 
-// FUNZIONI
+    const gridElem = document.querySelector(".grid");
+    // PRIMO IF PER LA SCELTA DELLA MODALITA' FACILE
 
-// GENERIAMO I NUMERI PER CASELLA
-function getEasyBox () {
-    for (let i = 1; i <= 100; i++) {
-        const grid = generateNewBox(i)
-        grid.addEventListener("click", colorClick)
-        gridElem.append(grid)
+    if (userChoiseInput === "facile") {
+        
+        // GENERIAMO I NUMERI PER CASELLA
+        function getEasyBox () {
+            gridElem.innerHTML = "";
+            for (let i = 1; i <= easyBox; i++) {
+                const grid = generateNewBox(i);
+                grid.addEventListener("click", colorClick);
+                gridElem.append(grid);
+            }
+        }
+        getEasyBox()
+        // CREIAMO LA FUNZIONE PER IL BOX
+        function generateNewBox(testo) {
+            const newBox = document.createElement("div");
+            newBox.classList.add ("grid-item");
+            newBox.classList.add ("easy");
+            newBox.innerHTML = `<span>${testo}</span>`;
+            return newBox;
+        }
+    } 
+    // ORA IMPLEMENTIAMO LA SCELTA DELLA MODALITA' NORMALE
+    else if (userChoiseInput === "normale") {
+        // btnStart.addEventListener("click", getMediumBox)
+    
+        // GENERIAMO I NUMERI PER CASELLA
+        function getMediumBox () {
+            gridElem.innerHTML = "";
+            for (let i = 1; i <= mediumBox; i++) {
+                const grid = generateNewBox(i);
+                grid.addEventListener("click", colorClick);
+                gridElem.append(grid);
+            }
+        }
+        getMediumBox()
+        // CREIAMO LA FUNZIONE PER IL BOX
+        function generateNewBox(testo) {
+            const newBox = document.createElement("div");
+            newBox.classList.add ("grid-item");
+            newBox.classList.add ("medium");
+            newBox.innerHTML = `<span>${testo}</span>`;
+            return newBox;
+        }
     }
-}
+    // IMPLEMENTIAMO LA SCELTA DELLA MODALITA' DIFFICILE 
+    else if (userChoiseInput === "difficile"){
+        // btnStart.addEventListener("click", getHardBox)
+    
+        // GENERIAMO I NUMERI PER CASELLA
+        function getHardBox () {
+            gridElem.innerHTML = "";
+            for (let i = 1; i <= hardBox; i++) {
+                const grid = generateNewBox(i);
+                grid.addEventListener("click", colorClick);
+                gridElem.append(grid);
+            }
+        }
+        getHardBox()
+        // CREIAMO LA FUNZIONE PER IL BOX
+        function generateNewBox(testo) {
+            const newBox = document.createElement("div");
+            newBox.classList.add ("grid-item");
+            newBox.classList.add ("hard");
+            newBox.innerHTML = `<span>${testo}</span>`;
+            return newBox;
+        }
+    }
+    // RIPULISCO I CAMPI PER NON RICLICCARE IL BOTTONE
+    userChoise.value = ""
+})
 
-// CREIAMO LA FUNZIONE PER IL BOX
-function generateNewBox(testo) {
-    const newBox = document.createElement("div");
-    newBox.classList.add ("grid-item");
-    newBox.classList.add ("easy");
-    newBox.innerHTML = `<span>${testo}</span>`;
-    return newBox;
-}
-
+// FUNZIONE PER IL CLICK SUL BOX
 function colorClick() {
     const clickNumber = parseInt(this.querySelector("span").textContent)
     this.classList.toggle("azure");

@@ -11,20 +11,28 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.3rem;
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .title {
     text-transform: uppercase;
+    display: flex;
+}
+
+.title h1 {
+    padding-left: 1rem;
 }
 
 button {
     padding: 0.3rem 2rem;
     margin-left: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 select {
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 /* MAIN SECTION */
@@ -35,7 +43,7 @@ main {
 
 .main-container {
     width: 800px; 
-    height: calc(100vh - 180px);
+    height: 800px;
     margin: auto;
 }
 
